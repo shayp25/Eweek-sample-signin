@@ -74,3 +74,4 @@ In the backend directory, you can run:
 
 ### `nodemon server`
 which will allow api calls to work and sign ins to run
+In the backend folder create a .env file with something like ATLAS_URI = mongo_server_url
