@@ -22,7 +22,7 @@ export class signinTable extends Component {
                 this.setState({
                     signins:signins.data
                 });
-                console.log(this.state.signins)//see if we're handling the data right
+                // console.log(this.state.signins)//see if we're handling the data right
             })
 
     }
@@ -36,19 +36,18 @@ export class signinTable extends Component {
     getTableHeaders = function(){
         // let header = this.getKeys()//Object.keys(this.state.signins[0])
         let header = this.getKeys()
-        console.log('header' + header)
         return header.map((key, index) => {
             return <th key={index}>{key.toUpperCase()}</th>
         })
     }
     getRowData = function() {
         let items = this.state.signins;
-        console.log(items);
+        // console.log(items);
         let keys = this.getKeys()
 
         return items.map( (row, index) => {
-            console.log(row._id)
-            return <tr key={index}><RenderRow key={index} data={row} keys={keys}/></tr>
+            // console.log(row._id)
+            return <tr key={index}><RenderRow key={row._id} data={row} keys={keys}/></tr>
         });
     }
 
@@ -74,19 +73,20 @@ export default signinTable
 const RenderRow = (props) =>{
     return (
         props.keys.map( (key, index) => {
-            // if (index === 0) {
-            //     return <td key={props.data[key]}>{props.data[key]}</td>
-            // }
+
             return  <td>
-                <input onChange={(e) => this.handleChange(index, 'qty', e.target.value)} 
-                                     type={props.data[key].type} 
-                                    //  className='form-control' 
-                                    //  step='1' min="1"
-                                     key={props.data[key]}
-                                     value={props.data[key]}/>
+                <input onChange={(e) => {
+                    
+                    console.log(e.target.value)
+                    console.log(key)
+                    console.log(props.data._id)
+                    }} //this.handleChange(index, 'qty', e.target.value)
+                                     type={props.data[key].type}
+                                     field={key} 
+                                    //  className='form-control'
+                                    //  mongoID={props._id} 
+                                     defaultValue={props.data[key]}/>
             </td>
-            
-            //  <td key={props.data[key]}>{props.data[key]}</td>
         })
     );
 }
