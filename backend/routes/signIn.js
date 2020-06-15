@@ -34,7 +34,6 @@ router.route('/add').post((req, res) => {
     'signingInOut': signingInOut
 };
 
-
   console.log(newSignIn);
   
   //it wont duplicate a sign in but it will add a new one
@@ -60,7 +59,7 @@ router.route('/update/:id').post((req, res) => {
   SignIn.findById(req.params.id)
     .then(signIn => {
       signIn.eventCode = req.body.eventCode;
-      signIn.description = req.body.description;
+      signIn.eid = req.body.eid;
 
       signIn.save()
         .then(() => res.json('SignIn updated!'))

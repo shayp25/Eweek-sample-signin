@@ -3,14 +3,16 @@ import logo from './logo.svg';
 import './App.css';
 import {BrowserRouter as Router,  Route} from 'react-router-dom';
 import signin from './components/signin';
+import signinTable from './components/signinTable';
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <div className="container">
-          <Route path="/" component ={signin}/>
-        </div>
+        
+          <Route exact path="/" component ={signin}/>
+          <Route exact path="/admin" component ={signinTable}/>
+       
       </Router>
     </div>
   );
