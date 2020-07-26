@@ -12,7 +12,7 @@ export class signinTable extends Component {
         this.getRowData = this.getRowData.bind(this);
         this.getTableHeaders = this.getTableHeaders.bind(this);
         this.state={
-            signins:[{ id: 1, name: '', age: 21, email: '' }]
+            signins:[{}]
         }
 
     }
@@ -29,12 +29,10 @@ export class signinTable extends Component {
    
     getKeys = function() {
         if(this.state.signins[0] !== undefined){
-            // console.log(this.state.signins[0].eid)
             return Object.keys(this.state.signins[0]);
         }
     }
     getTableHeaders = function(){
-        // let header = this.getKeys()//Object.keys(this.state.signins[0])
         let header = this.getKeys()
         return header.map((key, index) => {
             return <th key={index}>{key.toUpperCase()}</th>
@@ -76,7 +74,10 @@ const RenderRow = (props) =>{
 
             return  <td>
                 <input onChange={(e) => {
-                    
+                    axios.post('http://localhost:5000/signIn/update/', {
+                        id: props.data._id
+                      })
+                        .then()
                     console.log(e.target.value)
                     console.log(key)
                     console.log(props.data._id)

@@ -81,7 +81,7 @@ export class signin extends Component {
         }
         //debugging
         console.log(signin);
-        //**actually sending data to express to mongo
+        //**actually sending data to express then mongo
         axios.post('http://localhost:5000/signIn/add',signin)
             .then(res=>console.log(res.data));
         //clear form
