@@ -12,16 +12,17 @@ const placementSchema = new Schema({
   large3: { type: String, required: true },
   large4: { type: String, required: true },
   large5: { type: String, required: true },
-  largeParticipated: { type: String[10], required: true },
+  largeParticipated: { type: [String], required: true },
   
   small1: { type: String, required: true },
   small2: { type: String, required: true },
   small3: { type: String, required: true },
   small4: { type: String, required: true },
   small5: { type: String, required: true },
-  smallParticipated: { type: String[10], required: true }
+  smallParticipated: { type:[String], required: true }
 }, {
   timestamps: true,
+  collection: 'Placement Forms',
 });
 
 const Placement = mongoose.model('Placement', placementSchema);

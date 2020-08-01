@@ -19,6 +19,7 @@ const judgingSchema = new Schema({
   finalThoughts: { type: String, required: true },
 }, {
   timestamps: true,
+  collection: 'Hosting Form',
 });
 
 const Judging = mongoose.model('Judging', judgingSchema);

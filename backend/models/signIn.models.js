@@ -14,6 +14,7 @@ const signInSchema = new Schema({
  
 }, {
   timestamps: true,
+  collection: 'signins'
 });
 
 const signIn = mongoose.model('SignIn', signInSchema);
