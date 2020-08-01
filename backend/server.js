@@ -12,7 +12,7 @@ app.use(express.json());
 
 const uri = process.env.ATLAS_URI;
 
-mongoose.connect(uri, {useNewUrlParser:true, useCreateIndex:true});
+mongoose.connect(uri, {useNewUrlParser:true, useCreateIndex:true,useUnifiedTopology:true,useFindAndModify:false});
 const connection = mongoose.connection;
 
 connection.once('open', ()=>{
@@ -21,9 +21,13 @@ connection.once('open', ()=>{
 
 //import specific route
 const signInRouter = require('./routes/signIn');
+const judgingRouter = require('./routes/judging');
+const placementRouter = require('./routes/placement');
 
-//implement specific route for a commmand on /excercises
+//implement specific route for a commmand on /Signin
 app.use('/signIn',signInRouter);
+app.use('/judging',judgingRouter);
+app.use('/placement',placementRouter);
 
 
 app.listen(port,()=>{
